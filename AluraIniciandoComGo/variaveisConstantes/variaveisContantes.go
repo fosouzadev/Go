@@ -5,6 +5,8 @@ import (
 	"reflect"
 )
 
+const externa = "valorExterno"
+
 func main() {
 	var name string = "Fulano" // valor default ""
 	var nameEmpty string
@@ -30,4 +32,8 @@ func main() {
 	fmt.Println("int   : ", age, " ", ageEmpty, " ", age2, " ", reflect.TypeOf(typeInt))
 	fmt.Println("float : ", value, " ", valueEmpty, " ", value2, " ", reflect.TypeOf(typeFloat))
 	fmt.Println("bool  : ", isValid, " ", isValidEmpty, " ", isValid2, " ", reflect.TypeOf(typeBool))
+
+	const interna = "valorInterno"
+	fmt.Println("\nconstante", interna) // verificar typeof da constante
+	fmt.Println("constante", externa)
 }
