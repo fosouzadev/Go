@@ -7,6 +7,8 @@ import (
 	"time"
 )
 
+const delay = 5
+
 func main() {
 	for { // significa um loop infinito, podendo finalizar com break
 		exibirMenu()
@@ -62,8 +64,6 @@ func executar(option int) {
 	} */
 }
 
-const delay = 5
-
 func iniciarMonitoramento(automatico bool) {
 	sites := []string{
 		"https://random-status-code.herokuapp.com/",
@@ -79,6 +79,7 @@ func iniciarMonitoramento(automatico bool) {
 			}
 
 			time.Sleep(delay * time.Second)
+			fmt.Println()
 		}
 	} else {
 		for _, site := range sites {
@@ -86,6 +87,11 @@ func iniciarMonitoramento(automatico bool) {
 		}
 	}
 }
+
+// func leSitesDoArquivo() []string {
+// 	arquivo, _ := os.Open("sites.txt")
+// 	arquivo.
+// }
 
 func monitorarSite(site string) {
 	response, _ := http.Get(site)

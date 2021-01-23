@@ -34,6 +34,6 @@ func main() {
 	fmt.Println("bool  : ", isValid, " ", isValidEmpty, " ", isValid2, " ", reflect.TypeOf(typeBool))
 
 	const interna = "valorInterno"
-	fmt.Println("\nconstante", interna) // verificar typeof da constante
-	fmt.Println("constante", externa)
+	fmt.Println("\nconstante", interna, reflect.TypeOf(interna))
+	fmt.Println("constante", externa, reflect.TypeOf(externa))
 }
