@@ -28,10 +28,16 @@ func main() {
 	isValid2 := false
 	var typeBool = true
 
+	var letra rune = 'f'
+	var letraEmpty rune
+	letra2 := 'f'
+	var letraRune = 'f'
+
 	fmt.Println("string: ", name, " ", nameEmpty, " ", name2, " ", reflect.TypeOf(typeString))
 	fmt.Println("int   : ", age, " ", ageEmpty, " ", age2, " ", reflect.TypeOf(typeInt))
 	fmt.Println("float : ", value, " ", valueEmpty, " ", value2, " ", reflect.TypeOf(typeFloat))
 	fmt.Println("bool  : ", isValid, " ", isValidEmpty, " ", isValid2, " ", reflect.TypeOf(typeBool))
+	fmt.Println("rune  : ", letra, " ", letraEmpty, " ", letra2, " ", reflect.TypeOf(letraRune)) // tabela AscII
 
 	const interna = "valorInterno"
 	fmt.Println("\nconstante", interna, reflect.TypeOf(interna))
