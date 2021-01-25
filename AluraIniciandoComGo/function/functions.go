@@ -11,6 +11,10 @@ func main() {
 	nome, idade := maisDeUmRetorno()
 	_, idade2 := maisDeUmRetorno() // podemos ignorar um dos retornos com _ underline
 	fmt.Println(nome, idade, idade2)
+
+	fmt.Println(variosParametros())
+	fmt.Println(variosParametros(1))
+	fmt.Println(variosParametros(1, 2))
 }
 
 // sem parametro / sem retorno
@@ -39,4 +43,13 @@ func maisDeUmRetorno() (string, int) {
 	nome := "Fulano"
 	idade := 30
 	return nome, idade
+}
+
+// quantidade indeternimada de parametros
+func variosParametros(numeros ...int) int {
+	soma := 0
+	for _, num := range numeros {
+		soma += num
+	}
+	return soma
 }

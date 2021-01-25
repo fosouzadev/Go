@@ -1,21 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+)
 
 type Pessoa struct {
-	nome  string
-	idade int
+	nome     string
+	idade    int
+	acordado bool
+}
+
+// caso não altere o objeto, nao precisamos adicionar *
+func (p Pessoa) Correr(km int64) string {
+	result := "Correr " + strconv.FormatInt(km, 10) + "km"
+	return result
+}
+
+// altera o objeto que esta chamando, é um ponteiro *
+func (p *Pessoa) Dormir() {
+	p.acordado = false
 }
 
 func main() {
 	fmt.Println("Formas de criar um objeto struct")
 	pessoa1 := Pessoa{}
 	pessoa2 := Pessoa{nome: "Juca"}
-	pessoa3 := Pessoa{"Cesar", 40}
+	pessoa3 := Pessoa{"Cesar", 40, true}
 	var pessoa4 = Pessoa{idade: 25}
 	var pessoa5 Pessoa = Pessoa{nome: "July", idade: 20}
 
-	fmt.Println(pessoa1)
+	pessoa2.Dormir()
+
+	fmt.Println(pessoa1, pessoa1.Correr(10))
 	fmt.Println(pessoa2)
 	fmt.Println(pessoa3)
 	fmt.Println(pessoa4)

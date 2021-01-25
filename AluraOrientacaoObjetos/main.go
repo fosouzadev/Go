@@ -1,33 +1,31 @@
 package main
 
-import "fmt"
-
-type ContaCorrente struct {
-	titular       string
-	numeroAgencia int
-	numeroConta   int
-	saldo         float64
-}
+import (
+	cli "Go/AluraOrientacaoObjetos/clientes"
+	"Go/AluraOrientacaoObjetos/contas"
+	"fmt"
+)
 
 func main() {
 	// cria como estrutura
-	contaGuilherme := ContaCorrente{titular: "Guilherme", saldo: 10000}
+	contaGui := contas.ContaCorrente{Titular: cli.Titular{Nome: "Guilherme"}, NumeroAgencia: 12, NumeroConta: 123}
+	contaGui.Depositar(100)
 
-	contaBruna := ContaCorrente{"Bruna", 222, 111222, 2000}
+	contaCris := contas.ContaPoupanca{Titular: cli.Titular{Nome: "Cris"}, NumeroAgencia: 14, NumeroConta: 525}
+	contaCris.Depositar(300)
 
-	// cria como um objeto que pode ser nil, é um ponteiro
-	contaCris := new(ContaCorrente)
-	contaCris.titular = "Cris"
+	if contaCris.Sacar(40) {
+		fmt.Println("Saque ok, saldo : ", contaCris.ObterSaldo())
+	} else {
+		fmt.Println("Valor inválido, saldo : ", contaCris.ObterSaldo())
+	}
 
-	var contaPaulo *ContaCorrente
-	contaPaulo = new(ContaCorrente)
-	contaPaulo.titular = "Paulo"
+	_, saldoAtual := contaCris.Depositar(40)
+	fmt.Println(saldoAtual)
 
-	//contaPaulo = nil  // permite
-	//contaBruna = nil  // não permite
-
-	fmt.Println(contaGuilherme)
-	fmt.Println(contaBruna)
-	fmt.Println("Ponteiro", contaCris, "Valor do ponteiro", *contaCris)
-	fmt.Println("Ponteiro", contaPaulo, "Valor do ponteiro", *contaPaulo)
+	if contaCris.Transferir(50, &contaGui) {
+		fmt.Println("Transferencia ok", contaGui, contaCris)
+	} else {
+		fmt.Println("Transferencia inválida", contaGui, contaCris)
+	}
 }
