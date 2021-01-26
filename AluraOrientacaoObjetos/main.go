@@ -6,6 +6,10 @@ import (
 	"fmt"
 )
 
+func pagarBoleto(conta contas.ContaInterface, valorBoleto float64) {
+	conta.Sacar(valorBoleto)
+}
+
 func main() {
 	// cria como estrutura
 	contaGui := contas.ContaCorrente{Titular: cli.Titular{Nome: "Guilherme"}, NumeroAgencia: 12, NumeroConta: 123}
@@ -28,4 +32,9 @@ func main() {
 	} else {
 		fmt.Println("Transferencia inválida", contaGui, contaCris)
 	}
+
+	pagarBoleto(&contaGui, 40)
+	pagarBoleto(&contaCris, 10)
+
+	fmt.Println(contaGui, contaCris)
 }
