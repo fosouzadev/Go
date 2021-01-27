@@ -1,0 +1,9 @@
+
+# Docker 
+docker run -p 5432:5432 --name postgresserver -e POSTGRES_PASSWORD=123456 -d postgres
+
+# Connect on Azure Data Studio
+server: localhost
+post: 5432
+user: postgres
+password: 123456

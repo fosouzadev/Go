@@ -18,6 +18,15 @@ func main() {
 
 	fmt.Println()
 
+	// loop condicional
+	indice = 0
+	for indice < len(numeros) {
+		fmt.Println("indice", indice, "valor", numeros[indice])
+		indice++
+	}
+
+	fmt.Println()
+
 	// loop tradicional
 	//for i := 0; i < len(numeros); i++ {
 	for indice = 0; indice < len(numeros); indice++ {
