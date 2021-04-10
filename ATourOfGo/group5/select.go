@@ -4,10 +4,12 @@ import "fmt"
 
 func fibonacci(c, quit chan int) {
 	x, y := 0, 1
+	fmt.Println("fibonacci start")
 	for {
 		select {
 		case c <- x:
 			x, y = y, x+y
+			fmt.Println("fibonacci run")
 		case <-quit:
 			fmt.Println("quit")
 			return

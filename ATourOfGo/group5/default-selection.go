@@ -6,8 +6,9 @@ import (
 )
 
 func main() {
-	tick := time.Tick(100 * time.Millisecond)
-	boom := time.After(500 * time.Millisecond)
+	tick := time.Tick(100 * time.Millisecond)  // sempre que tentar receber valor retorna apos tempo definido
+	boom := time.After(500 * time.Millisecond) // somente uma vez apos tempo definido
+
 	for {
 		select {
 		case <-tick:
