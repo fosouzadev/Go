@@ -4,7 +4,8 @@ import (
 	"fmt"
 	"log"
 
-	"fosouzadev/greetings"
+	//"fosouzadev/greetings"
+	"../greetings"
 )
 
 func main() {
