@@ -6,12 +6,50 @@ import (
 )
 
 type User struct {
-	Id   rune
-	Name string
+	Id   int64  `json:id`
+	Name string `json:name`
 }
 
 func main() {
-	tipoStruct()
+	//tipoPrimitivo()
+	//tipoStruct()
+
+	tp := reflect.TypeOf(User{})
+	userInterface := createObjet(tp, 13, "{ \"name\": \"felipe\" }")
+	user := userInterface.(User)
+	user.Name = "felipe"
+	fmt.Println(user)
+
+	/* sliceType := reflect.TypeOf([]User{})
+	itemType := reflect.TypeOf(User{})
+	usersInterface := createArray(sliceType, itemType)
+	users := usersInterface.([]User)
+	users[0].Id = 1
+	users[0].Name = "felipe"
+	fmt.Println(users) */
+}
+
+func createArray(sliceType reflect.Type, itemType reflect.Type) interface{} {
+	items := reflect.MakeSlice(sliceType, 0, 3)
+
+	items = reflect.Append(items, reflect.New(itemType).Elem())
+	items = reflect.Append(items, reflect.New(itemType).Elem())
+
+	//fmt.Println("value    : ", items)
+	return items.Interface()
+}
+
+func createObjet(tp reflect.Type, id int64, jsonValue string) interface{} {
+	item := reflect.New(tp)
+
+	valueOfSet := item.Elem()
+	valueOfSet.FieldByName("Id").SetInt(id)
+
+	fmt.Println("type     :", valueOfSet.Type().Name())
+	fmt.Println("can edit : ", item.Elem().CanSet())
+	fmt.Println("value    : ", item)
+
+	return valueOfSet.Interface()
 }
 
 func tipoStruct() {
